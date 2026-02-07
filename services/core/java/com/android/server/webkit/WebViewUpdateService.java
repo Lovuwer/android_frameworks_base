@@ -92,7 +92,7 @@ public class WebViewUpdateService extends SystemService {
                             // In the case where we receive an intent to remove the old version of
                             // the package that is being replaced we early-out here so that we don't
                             // run the update-logic twice.
-                            if (intent.getExtras().getBoolean(Intent.EXTRA_REPLACING)) return;
+                            if (intent.getBooleanExtra(Intent.EXTRA_REPLACING, false)) return;
                             mImpl.packageStateChanged(packageNameFromIntent(intent),
                                     PACKAGE_REMOVED, userId);
                             break;
@@ -106,7 +106,7 @@ public class WebViewUpdateService extends SystemService {
                             break;
                         case Intent.ACTION_PACKAGE_ADDED:
                             mImpl.packageStateChanged(packageNameFromIntent(intent),
-                                    (intent.getExtras().getBoolean(Intent.EXTRA_REPLACING)
+                                    (intent.getBooleanExtra(Intent.EXTRA_REPLACING, false)
                                      ? PACKAGE_ADDED_REPLACED : PACKAGE_ADDED), userId);
                             break;
                         case Intent.ACTION_USER_STARTED:
