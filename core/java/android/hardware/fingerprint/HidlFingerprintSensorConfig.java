@@ -157,6 +157,8 @@ public final class HidlFingerprintSensorConfig extends SensorProps {
             return sensorLocation;
         } catch (Exception e) {
             Slog.w(TAG, "malformed sensor location", e);
+        } finally {
+            array.recycle();
         }
         return null;
     }

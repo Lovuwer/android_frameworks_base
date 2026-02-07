@@ -614,7 +614,7 @@ final class UiModeManagerService extends SystemService {
             List<String> settings = Arrays.asList(
                     Secure.UI_NIGHT_MODE, Secure.DARK_THEME_CUSTOM_START_TIME,
                     Secure.DARK_THEME_CUSTOM_END_TIME);
-            if (settings.contains(intent.getExtras().getCharSequence(Intent.EXTRA_SETTING_NAME))) {
+            if (settings.contains(intent.getStringExtra(Intent.EXTRA_SETTING_NAME))) {
                 synchronized (mLock) {
                     updateNightModeFromSettingsLocked(context, context.getResources(),
                             UserHandle.getCallingUserId());
